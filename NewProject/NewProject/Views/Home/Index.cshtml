@@ -14,9 +14,10 @@
             <td id="datetime">@Objects.FECHA_REGISTRO</td>
             <td id="price">@Objects.PRECIO</td>
             <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="@Objects.ID_OBJETO" value="@Objects.ID_OBJETO" onclick="Mandar(this.value)">EDIT</button></td>
+            <td><button type="button" class="btn btn-danger" id="@Objects.ID_OBJETO" value="@Objects.ID_OBJETO" onclick="Delete(this.value)">Delete</button></td>
         </tr>
     }
-   
+    
 </table>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -44,23 +45,19 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" id="modalito">
-                <table>
-                    <tr>
-                        <td id="name1"></td>
-                        <td id="color1"></td>
-                        <td id="datetime1"></td>
-                        <td id="price1"></td>
 
-                    </tr>
-                </table>
-
-                <input type="text" id="Nombre" value="" />
-
+            <input type="text" id="Nombre" value="" />
+            <br />
+            <input type="text" id="Color" value="" />
+            <br />
+            <input type="date" id="FechaRegistro" value="" />
+            <br />
+            <input type="number" id="Precio" value="" />
+            <input type="number" id="idObjeto" value="" />
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" onclick="Editar();">Save changes</button>
             </div>
         </div>
     </div>

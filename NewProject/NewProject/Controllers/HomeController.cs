@@ -64,7 +64,42 @@ namespace NewProject.Controllers
             }
         }
 
+        public JsonResult EditarObjeto(int idObjeto, string nombre, string color, DateTime fechaRegistro, decimal precio)
+        {
+            var objeto = db.ObjetosDB.Where(x => x.ID_OBJETO == idObjeto).FirstOrDefault();
+            objeto.NOMBRE = nombre;
+            objeto.COLOR = color;
+            objeto.FECHA_REGISTRO = fechaRegistro;
+            objeto.PRECIO=precio;
+            try
+            {
+                db.SaveChanges();
+                return Json(0, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(1, JsonRequestBehavior.AllowGet);
+                throw;
+            }
+        }
 
-
+        public JsonResult EliminarObjeto(int idObjeto)
+        {
+            OBJETOS objeto = db.ObjetosDB.Find(idObjeto);
+            try
+            {
+                db.ObjetosDB.Remove(objeto);
+                db.SaveChanges();
+                return Json(0, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(1, JsonRequestBehavior.AllowGet);
+                throw;
+            }
+            
+            //var objeto = db.ObjetosDB.Where(x => x.ID_OBJETO == idObjeto).FirstOrDefault();
+            return Json(objeto, JsonRequestBehavior.AllowGet);
+        }
     }
 }
