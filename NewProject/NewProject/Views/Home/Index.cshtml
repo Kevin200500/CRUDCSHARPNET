@@ -31,11 +31,16 @@
 <br />
 <br />
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" onclick="sendform();">
+<button type="button" class="btn btn-primary w-50" onclick="sendform();">
     Agregar Objeto
 </button>
 
-
+@Html.Partial("~/Views/Home/_PartialViewColors.cshtml")
+<br />
+    <input type="text" id="cadena" value="" />
+    <input type="text" id="vocal" value="" />
+    <input type="text" id="consonante" value="" />
+    <button onclick="Vocals();">Vocales</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

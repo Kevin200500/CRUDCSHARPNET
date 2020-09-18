@@ -89,3 +89,37 @@ const Delete = (idObj) => {
 const sendform = () => {
     window.location.replace('/Home/Form');
 }
+
+const Vocals = () => {
+    let string = document.getElementById('cadena').value;
+    string = string.toLowerCase();
+    let arreglo = string.split("");
+    let vocales = [];
+    let consonantes = [];
+    for (let i = 0; i <= arreglo.length; i++) {
+        
+        switch (arreglo[i]) {
+            case "a":
+                vocales[i] = arreglo[i];
+                break;
+            case "e":
+                vocales[i] = arreglo[i];
+                break;
+            case "i":
+                vocales[i] = arreglo[i];
+                break;
+            case "o":
+                vocales[i] = arreglo[i];
+                break;
+            case "u":
+                vocales[i] = arreglo[i];
+                break;
+            default:
+                consonantes[i] = arreglo[i];
+                break;
+        }
+    }
+    document.getElementById('vocal').value = vocales;
+    document.getElementById('consonante').value = consonantes;
+
+}
