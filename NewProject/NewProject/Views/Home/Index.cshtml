@@ -5,13 +5,22 @@
 <script src="~/Scripts/Index.js"></script>
 
 <table>
+       <tr>
+           <th>ID</th>
+           <th>Nombre</th>
+           <th>Color</th>
+           <th>Registro</th>
+           <th>Precio</th>
+           <th>Editar</th>
+           <th>Eliminar</th>
+       </tr>
     @foreach (var Objects in Model)
     {
         <tr>
             <td id="id">@Objects.ID_OBJETO</td>
             <td id="name">@Objects.NOMBRE</td>
             <td id="color">@Objects.COLOR</td>
-            <td id="datetime">@Objects.FECHA_REGISTRO</td>
+            <td id="date" name="begin" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31">@Html.DisplayFor(modelItem=>Objects.FECHA_REGISTRO)</td>
             <td id="price">@Objects.PRECIO</td>
             <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="@Objects.ID_OBJETO" value="@Objects.ID_OBJETO" onclick="Mandar(this.value)">EDIT</button></td>
             <td><button type="button" class="btn btn-danger" id="@Objects.ID_OBJETO" value="@Objects.ID_OBJETO" onclick="Delete(this.value)">Delete</button></td>
@@ -19,21 +28,14 @@
     }
     
 </table>
+<br />
+<br />
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
+<button type="button" class="btn btn-primary" onclick="sendform();">
+    Agregar Objeto
 </button>
 
-<hr />
-<h4>Agregar Objeto</h4>
 
-<input class="form-control" type="text" id="TextBoxNombre" value="" placeholder="Nombre" />
-<input class="form-control" type="text" id="TextBoxColor" value="" placeholder="Color" />
-<input class="form-control" type="date" id="TextBoxFechaRegistro" value="" placeholder="Fecha R" />
-<input class="form-control" type="number" id="TextBoxPrecio" value="" placeholder="Precio" />
-
-<input class="btn btn-info" type="button" id="ButtonAgregar" onclick="Agregar()" value="Agregar" />
-<hr />
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -45,20 +47,18 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-
-            <input type="text" id="Nombre" value="" />
-            <br />
-            <input type="text" id="Color" value="" />
-            <br />
-            <input type="date" id="FechaRegistro" value="" />
-            <br />
-            <input type="number" id="Precio" value="" />
-            <input type="number" id="idObjeto" value="" />
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="Editar();">Save changes</button>
-            </div>
+                <input type="text" id="Nombre" value="" />
+                <br />
+                <input type="text" id="Color" value="" />
+                <br />
+                <input type="date" id="FechaRegistro" value="" placeholder="dd-mm-yyyy" min="1997-01-01" max="2030-12-31" />
+                <br />
+                <input type="number" id="Precio" value="" />
+                <input type="number" id="idObjeto" value="" />
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="Editar();">Save changes</button>
+                </div>
         </div>
     </div>
-</div>
+    </div>

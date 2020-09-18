@@ -1,5 +1,6 @@
 ﻿function Mandar(idObj) {
     $.ajax({
+        method:'GET',
         data: { idObjeto: idObj},
         dataType: 'json',
         url: '/Home/ObtenerObjeto'
@@ -10,7 +11,7 @@
         $('#Color').val(data.COLOR)
         $('#FechaRegistro').val(data.FECHA_REGISTRO)
         $('#Precio').val(data.PRECIO)
-
+        
     }).fail(function (jqXHR, textStatus, errorThrown) {
         console.log(textStatus + ': ' + errorThrown)
     });
@@ -26,6 +27,7 @@ function Agregar() {
 
 
     $.ajax({
+        method:"POST",
         data: { nombre: nombre, color: color, fechaRegistro: fechaRegistro, precio: precio},
         dataType: 'json',
         url: '/Home/AgregarObjeto'
@@ -33,6 +35,7 @@ function Agregar() {
         if (data === 0) {
             alert('Se agrego correctamente');
             location.reload();
+            window.location.replace('/Home/Index');
         }
         else {
             alert('No se agrego correctamente');
@@ -82,4 +85,7 @@ const Delete = (idObj) => {
     }).fail(function (jqXHR, textStatus, errorThrown) {
         console.log(textStatus + ': ' + errorThrown)
     });
+}
+const sendform = () => {
+    window.location.replace('/Home/Form');
 }

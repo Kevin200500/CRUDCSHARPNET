@@ -14,6 +14,8 @@ namespace NewProject.Models
         public int ID_OBJETO { get; set; }
         public string NOMBRE { get; set; }
         public string COLOR { get; set; }
+        [DisplayFormat(DataFormatString ="{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public DateTime FECHA_REGISTRO { get; set; }
         public decimal? PRECIO { get; set; }
     }

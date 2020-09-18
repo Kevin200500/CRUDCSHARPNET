@@ -16,7 +16,7 @@ namespace NewProject.Controllers
             // SELECT*FROM OBJETOS;
             var List = db.ObjetosDB.ToList();
             // SELECT*FROM OBJETOS WHERE ID_OBJETO=?;
-            var WhereList = db.ObjetosDB.Where(x => x.ID_OBJETO ==1).ToList();
+            var WhereList = db.ObjetosDB.Where(x => x.ID_OBJETO == 1).ToList();
             // seleccionamos uno
             var Select1 = db.ObjetosDB.Where(x => x.ID_OBJETO == 1).FirstOrDefault();
             return View(List);
@@ -35,14 +35,20 @@ namespace NewProject.Controllers
 
             return View();
         }
-
+        public ActionResult Form()
+        {
+            ViewBag.Message = "Object Form";
+            return View();
+        }
 
         // JSONS
+        [HttpGet]
         public JsonResult ObtenerObjeto(int idObjeto)
         {
             var objeto = db.ObjetosDB.Where(x => x.ID_OBJETO == idObjeto).FirstOrDefault();
             return Json(objeto, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
         public JsonResult AgregarObjeto(string nombre, string color, DateTime fechaRegistro, decimal precio)
         {
             OBJETOS objNuevo = new OBJETOS();
@@ -63,7 +69,6 @@ namespace NewProject.Controllers
                 throw;
             }
         }
-
         public JsonResult EditarObjeto(int idObjeto, string nombre, string color, DateTime fechaRegistro, decimal precio)
         {
             var objeto = db.ObjetosDB.Where(x => x.ID_OBJETO == idObjeto).FirstOrDefault();
@@ -82,7 +87,6 @@ namespace NewProject.Controllers
                 throw;
             }
         }
-
         public JsonResult EliminarObjeto(int idObjeto)
         {
             OBJETOS objeto = db.ObjetosDB.Find(idObjeto);
@@ -99,7 +103,7 @@ namespace NewProject.Controllers
             }
             
             //var objeto = db.ObjetosDB.Where(x => x.ID_OBJETO == idObjeto).FirstOrDefault();
-            return Json(objeto, JsonRequestBehavior.AllowGet);
+            
         }
     }
 }

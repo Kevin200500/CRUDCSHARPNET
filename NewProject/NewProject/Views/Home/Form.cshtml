@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Form Object";
+}
+<script src="~/Scripts/Index.js"></script>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <hr />
+        <h4>Agregar Objeto</h4>
+        <hr />
+        <form action="" method="post">
+            <input class="form-control" type="text" id="TextBoxNombre" value="" placeholder="Nombre" />
+            <input class="form-control" type="text" id="TextBoxColor" value="" placeholder="Color" />
+            <input class="form-control" type="date" id="TextBoxFechaRegistro" value="" placeholder="Fecha R" />
+            <input class="form-control" type="number" id="TextBoxPrecio" value="" placeholder="Precio" />
+            <input class="btn btn-info" type="button" id="ButtonAgregar" onclick="Agregar()" value="Agregar" />
+        </form>
+    </div>
+</body>
+</html>
